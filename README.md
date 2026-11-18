@@ -1,36 +1,36 @@
 # Emberdeep
 
-A pixel-art, turn-based, permadeath roguelike designed for Android. Descend floor by floor, die, and spend the soul shards you carried out on cosmetics only.
+Emberdeep is a complete, free, offline pixel-art roguelike for Android. It is a turn-based, permadeath dungeon crawler with a 100-chapter campaign, endless mode, large-sprite battles, gear progression, passive builds, class evolutions, and cosmetic-only shard unlocks.
 
 ## Features
 
-- Full-screen 1080p-adaptive Android layout with enlarged buttons, controls, and UI for easy viewing on a phone.
-- Viewport-fitted main menu and screens that scale to the device and avoid outer-page scrolling.
-- Battle sequence centered on screen and sized to fit the available height, with compact move-set bars and short move descriptions.
-- Map pinned in the upper right below the SOUND and MENU buttons, with FORGE, TREE, and GEAR controls grouped in the lower middle.
-- Zoomed character-centered view that explores the dungeon one labeled section at a time.
-- On-screen map overview with explored tiles, section grid, current section highlight, viewport, foes, loot, stairs, and player marker.
-- Translucent MOBA-style control overlay with a large left analog joystick for smooth, omnidirectional Zelda-style exploration.
-- Touch battle panel with enlarged command choices, a class move-set picker, and an item picker for Pokemon-style encounters.
-- Large right-side interaction button and quick bag wheel for pickups, potions, forge, passive tree, character, and cosmetics.
-- Pokemon-inspired encounter flow: bumping a foe starts a large-sprite battle sequence with intro, command, action, retaliation, and victory phases, and looping CC0 battle BGM.
-- CC0 pixel art from Kenney's Tiny Dungeon and Clint Bellanger's Tiny Creatures packs for heroes, monsters, and battle backdrops, with a brightened lively color grade.
-- Turn-based pacing: every tile crossed during free movement, battle command, skill, guard, potion, or wait advances one turn.
-- Three free classes (Warden, Ranger, Arcanist) with distinct skills. No class is locked or paid.
-- Procedural dungeons, fog of war, scaling enemies, loot, leveling, and a boss every fifth floor.
-- Two modes: a 100-chapter campaign across ten acts with story panels, objectives, and checkpoints every five chapters, and an endless descent with no floor cap.
-- Procedural map modifiers (Swarm Warrens, Lost Vault, Endless Labyrinth, Open Cavern, Cursed Depths, Mirror Halls) reroll on every floor.
-- Gear in five slots (weapon, armor, helm, boots, trinket) across seven rarities from Common to Ultimate. Ultimate has a tiny drop weight that rises slightly with depth and never becomes common.
-- Randomized equipment bonuses reroll alongside enchantments, with extra bonus rolls in endless mode.
-- Unlimited enhancement: every successful forge step raises a piece by +1, with a chance that approaches zero as the level grows but never reaches it.
-- Enchantments with elemental synergies when matching elements are equipped together.
-- Five equipment sets whose bonuses scale with the rarity of the equipped pieces.
-- A 24-node passive tree in four branches, two points per level, with prerequisites and a shard-cost respec.
-- Five class evolutions gated by level, passive-tree build, and kills, with distinct promotion names per class.
-- Permadeath runs with persistent soul shards. Only appearance unlocks survive death; gear does not.
-- Cosmetic vault for hero skins, dungeon tile themes, hit effects, and crests.
-- Currency packs are demo-only and grant gems that can buy cosmetics exclusively. No stat, gear, or power purchase exists anywhere in the game.
-- Large analog joystick, overlay touch controls, plus keyboard controls, responsive pixel-perfect canvas up to 1080p, on-screen minimap, local save of meta progress and active run.
+- Full 1.0.0 single-player release. No ads, no purchases, no account, and no online permission.
+- Full-screen 1080p-adaptive Android layout with enlarged buttons, controls, and UI.
+- Viewport-fitted menus and screens that avoid outer-page scrolling.
+- Centered, height-fitted battle sequence with compact three-column move-set bars and short descriptions.
+- Zoomed character-centered exploration with section labels and a full-floor minimap showing explored tiles, foes, loot, stairs, viewport, and current section.
+- Translucent MOBA-style overlay with a large left analog joystick for smooth omnidirectional movement.
+- Pokemon-inspired encounters: bumping a foe starts a large-sprite battle with intro, command, action, retaliation, victory, and defeat phases.
+- Battle polish with class-specific skills, damage numbers, screen shake, animated backgrounds, and looping CC0 battle music.
+- Music state persists between sessions and pauses/resumes correctly with app visibility.
+- Three free classes: Warden, Ranger, and Arcanist, each with a distinct skill and five evolutions.
+- Turn-based pacing: exploration tiles, attacks, skills, guard, potions, and waiting advance turns.
+- Procedural dungeons, fog of war, scaling enemies, map modifiers, loot, leveling, and bosses every fifth floor.
+- Named act guardians, boss heavy attacks, guaranteed boss gear, and relics that grant lasting run bonuses.
+- Two modes: a 100-chapter story campaign across ten acts with objectives and checkpoints every five chapters, and an endless descent with no floor cap and deeper late-game scaling.
+- Gear in five slots across seven rarities from Common to Ultimate, with equipment bonuses, enchantments, elemental synergies, and five scalable equipment sets.
+- Unlimited forge enhancement with a chance that approaches zero but never reaches it, plus enchant rerolls that scale with item depth.
+- A 24-node passive tree in four branches, two points per level, prerequisites, and shard-cost respec.
+- Campaign checkpoints grant era-appropriate gear and previously earned act relics so late chapters remain viable.
+- Permadeath runs with persistent shards. Shards buy cosmetics only; gear, XP, health, and floor skips are never sold.
+- Cosmetic vault for hero skins, dungeon tile themes, hit effects, and crests. Every cosmetic costs shards.
+- Local saves are normalized and versioned. Active battles resume with their current enemy state, and corruption is recovered safely.
+- Hardware Back and Escape dismiss overlays, return from menus, and back out of battle submenus without softlocking.
+- Keyboard and touch controls, focus-visible keyboard styling, potion and inventory caps, and storage-failure notices.
+
+## Download
+
+Sideload the v1.0.0 debug APK from https://github.com/Gilanoix31/Emberdeep/releases/tag/v1.0.0
 
 ## Run in a browser
 
@@ -51,9 +51,17 @@ npm run android:sync
 npm run android:open
 ```
 
-In Android Studio, choose **Build > Build Bundle(s) / APK(s) > Build APK(s)**. For later changes run `npm run android:sync` again.
+For release APKs from the command line:
 
-Capacitor loads the contents of `www/`, so any browser change is picked up by a sync.
+```bash
+cd android
+npm run android:sync
+ANDROID_HOME=/opt/android-sdk ANDROID_SDK_ROOT=/opt/android-sdk ./gradlew assembleDebug --no-daemon
+cp app/build/outputs/apk/debug/app-debug.apk /emberdeep-debug.apk
+sha256sum /emberdeep-debug.apk
+```
+
+Capacitor loads the contents of `www/`, so any browser change requires a sync before building.
 
 ## Controls
 
@@ -69,10 +77,9 @@ Capacitor loads the contents of `www/`, so any browser change is picked up by a 
 | Drink potion | Tap BAG, then POTION, or ITEM in battle | P |
 | Toggle sound | SOUND button | - |
 | Menu | MENU | Escape |
+| Back / close overlay | Device Back | Escape |
 
-The title screen lets you choose CAMPAIGN or ENDLESS before starting. The FORGE, TREE, and GEAR buttons in the lower middle open the gear, passive-tree, and evolution screens. Campaign objectives must be completed before the stairs will open.
-
-The camera stays zoomed in on your character and the current labeled section of the whole map. The on-screen minimap shows explored tiles, nearby foes and loot, stairs, the current viewport, and a gold outline around the active section. Push the joystick in any direction to move freely, including diagonals. Bumping an enemy starts a Pokemon-style battle with a large sprite sequence. Use the touch panel to choose an action, open your class move set, or open items. Stand near an item and press A to pick it up; BAG opens the right-side quick wheel. Stepping on `>` descends.
+Campaign objectives must be completed before the stairs will open. Potions cap at nine. The cosmetic vault is always free and shard-only.
 
 ## Asset credits
 
@@ -80,34 +87,30 @@ The camera stays zoomed in on your character and the current labeled section of 
 - Dungeon tiles and battle backdrops: **Tiny Dungeon** by Kenney, CC0, https://opengameart.org/content/tiny-dungeon
 - Battle loop: **Chiptune Battle Music** by Alex Jaffe, CC0, https://opengameart.org/content/chiptune-battle-music
 
-## Monetization notes
-
-`showGemModal()` in `www/js/ui.js` is an offline demonstration of a currency purchase. Replace it with a real billing plugin (for example `@capacitor-community/in-app-purchases`) and grant gems from your server-verified purchase callback. All shop entries come from `COSMETICS` in `www/js/data.js` and only change `palette`, `theme`, `fx`, or `badge`. There is no code path that sells attack, defense, health, gear, xp, or floor skips.
-
 ## Project layout
 
 - `www/index.html` - screens, HUD, full-screen stage, minimap, overlaid touch controls, battle overlay
-- `www/style.css` - enlarged responsive glass UI with translucent joystick, action button, bag wheel, minimap, and battle layouts
-- `www/js/data.js` - sprites, classes, enemies, cosmetics, themes, battle skies
+- `www/style.css` - responsive glass UI, joystick, action button, bag wheel, minimap, battle layouts
+- `www/js/data.js` - sprites, classes, enemies, relic effects, cosmetics, themes, battle skies
 - `www/js/assets.js` - CC0 sprite sheet loading and frame mapping
-- `www/js/audio.js` - looping battle music controller
-- `www/js/story.js` - campaign acts, 100 chapter beats, objectives, checkpoint level scaling
+- `www/js/audio.js` - looping battle music controller with persistence and visibility handling
+- `www/js/story.js` - campaign acts, 100 chapter beats, objectives, checkpoint scaling
 - `www/js/progression.js` - rarities, bonuses, sets, enchantments, passive tree, evolutions, derived stats
 - `www/js/dungeon.js` - generation, map modifiers, scaling, field of view, line of sight
 - `www/js/game.js` - run state, combat, battle sequence, progression, persistence
-- `www/js/render.js` - adaptive zoomed section camera, minimap, and large-sprite battle rendering
+- `www/js/render.js` - zoomed section camera, minimap, and large-sprite battle rendering
 - `www/js/ui.js` - screens, HUD, joystick, interaction prompt, bag wheel, battle controls, shop
-- `www/js/main.js` - bootstrap, resize handling, and battle animation loop
-- `www/assets/art/` - CC0 sprite sheets
-- `www/assets/audio/` - CC0 battle loop
-
-## APK checksum
-
-v0.2.4.1 debug SHA-256: `422d1d5dd1d93606a963f1aff9781459da13741914848451d1600fb8835b4167`
+- `www/js/main.js` - bootstrap, resize handling, and animation frame loop
+- `tests/smoke.js` - 147-check headless smoke suite
 
 ## Checks
 
 ```bash
-npm run check
-node /tmp/opencode/smoke.js
+npm run verify
 ```
+
+`npm run verify` runs syntax checks and the headless smoke suite.
+
+## APK checksum
+
+v1.0.0 debug SHA-256: `f8a3de690b8fe71accfa02abc317dff01c50873a0b5fba1a3317327b2c9760b4`
