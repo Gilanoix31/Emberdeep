@@ -6,7 +6,7 @@ A pixel-art, turn-based, permadeath roguelike designed for Android. Descend floo
 
 - Full-screen 1080p-adaptive Android layout with enlarged buttons, controls, and UI for easy viewing on a phone.
 - Viewport-fitted main menu and screens that scale to the device and avoid outer-page scrolling.
-- Battle sequence centered on screen and sized to fit the available height.
+- Battle sequence centered on screen and sized to fit the available height, with compact move-set bars and short move descriptions.
 - Map pinned in the upper right below the SOUND and MENU buttons, with FORGE, TREE, and GEAR controls grouped in the lower middle.
 - Zoomed character-centered view that explores the dungeon one labeled section at a time.
 - On-screen map overview with explored tiles, section grid, current section highlight, viewport, foes, loot, stairs, and player marker.
@@ -103,7 +103,7 @@ The camera stays zoomed in on your character and the current labeled section of 
 
 ## APK checksum
 
-v0.2.4 debug SHA-256: `4f638b4863c43bcd2cb9e89e3f01782ddcda8c769b56e520cd660c7e50ee32b6`
+v0.2.4.1 debug SHA-256: `422d1d5dd1d93606a963f1aff9781459da13741914848451d1600fb8835b4167`
 
 ## Checks
 
